@@ -1,4 +1,8 @@
 warning('off')
+global trig_inv
+trig_inv = 0;
+global trig_hyp
+trig_hyp = 0;
 // Creating GUI
 calc_gui = figure("visible", "off", "menubar_visible", "off", "toolbar_visible", "off", "infobar_visible", "off");
 calc_gui.figure_position = [-1,-1];
@@ -13,9 +17,8 @@ output_box.Position = "20|360|625|40";
 output_box.Tag = "editbox1_Calculator";
 output_box.String = " ";
 output_box.BackgroundColor = "-1|-1|-1";
-output_box.FontSize = 20
-output_box.HorizontalAlignment = "right"
-output_box.Callback = "editbox1_Calculator_callback";
+output_box.FontSize = 20;
+output_box.HorizontalAlignment = "right";
 
 button_paranthesis_right = uicontrol(findobj("tag" , "Calculator_gui"),"Style","pushbutton");
 button_paranthesis_right.Position = "185|52|45|45";
@@ -83,77 +86,77 @@ button_add.Callback = "add_Calculator_callback";
 button_decimal = uicontrol(findobj("tag" , "Calculator_gui"),"Style","pushbutton");
 button_decimal.Position = "370|52|45|45";
 button_decimal.Tag = "button_decimal";
-button_decimal.Icon = "F:\SCILAB\PROJECT\calc_3\dot.png"
+button_decimal.Icon = "IMAGES\dot.png";
 button_decimal.BackgroundColor = "-1|-1|-1";
 button_decimal.Callback = "decimal_Calculator_callback";
 
 button_0 = uicontrol(findobj("tag" , "Calculator_gui"),"Style","pushbutton");
 button_0.Position = "310|52|45|45";
 button_0.Tag = "button_0";
-button_0.Icon = "F:\SCILAB\PROJECT\calc_3\0.png"
+button_0.Icon = "IMAGES\0.png";
 button_0.BackgroundColor = "-1|-1|-1";
 button_0.Callback = "zero_Calculator_callback";
 
 button_9 = uicontrol(findobj("tag" , "Calculator_gui"),"Style","pushbutton");
 button_9.Position = "370|112|45|45";
 button_9.Tag = "button_9";
-button_9.Icon = "F:\SCILAB\PROJECT\calc_3\9.png"
+button_9.Icon = "IMAGES\9.png";
 button_9.BackgroundColor = "-1|-1|-1";
 button_9.Callback = "nine_Calculator_callback";
 
 button_8 = uicontrol(findobj("tag" , "Calculator_gui"),"Style","pushbutton");
 button_8.Position = "310|112|45|45";
 button_8.Tag = "button_8";
-button_8.Icon = "F:\SCILAB\PROJECT\calc_3\8.png"
+button_8.Icon = "IMAGES\8.png";
 button_8.BackgroundColor = "-1|-1|-1";
 button_8.Callback = "eight_Calculator_callback";
 
 button_7 = uicontrol(findobj("tag" , "Calculator_gui"),"Style","pushbutton");
 button_7.Position = "250|112|45|45";
 button_7.Tag = "button_7";
-button_7.Icon = "F:\SCILAB\PROJECT\calc_3\7.png"
+button_7.Icon = "IMAGES\7.png";
 button_7.BackgroundColor = "-1|-1|-1";
 button_7.Callback = "seven_Calculator_callback";
 
 button_6 = uicontrol(findobj("tag" , "Calculator_gui"),"Style","pushbutton");
 button_6.Position = "370|172|45|45";
 button_6.Tag = "button_6";
-button_6.Icon = "F:\SCILAB\PROJECT\calc_3\6.png"
+button_6.Icon = "IMAGES\6.png";
 button_6.BackgroundColor = "-1|-1|-1";
 button_6.Callback = "six_Calculator_callback";
 
 button_5 = uicontrol(findobj("tag" , "Calculator_gui"),"Style","pushbutton");
 button_5.Position = "310|172|45|45";
 button_5.Tag = "button_5";
-button_5.Icon = "F:\SCILAB\PROJECT\calc_3\5.png"
+button_5.Icon = "IMAGES\5.png";
 button_5.BackgroundColor = "-1|-1|-1";
 button_5.Callback = "five_Calculator_callback";
 
 button_4 = uicontrol(findobj("tag" , "Calculator_gui"),"Style","pushbutton");
 button_4.Position = "250|172|45|45";
 button_4.Tag = "button_4";
-button_4.Icon = "F:\SCILAB\PROJECT\calc_3\4.png"
+button_4.Icon = "IMAGES\4.png";
 button_4.BackgroundColor = "-1|-1|-1";
 button_4.Callback = "four_Calculator_callback";
 
 button_3 = uicontrol(findobj("tag" , "Calculator_gui"),"Style","pushbutton");
 button_3.Position = "370|232|45|45";
 button_3.Tag = "button_3";
-button_3.Icon = "F:\SCILAB\PROJECT\calc_3\3.png"
+button_3.Icon = "IMAGES\3.png";
 button_3.BackgroundColor = "-1|-1|-1";
 button_3.Callback = "three_Calculator_callback";
 
 button_2 = uicontrol(findobj("tag" , "Calculator_gui"),"Style","pushbutton");
 button_2.Position = "310|232|45|45";
 button_2.Tag = "button_2"
-button_2.Icon = "F:\SCILAB\PROJECT\calc_3\2.png"
+button_2.Icon = "IMAGES\2.png";
 button_2.BackgroundColor = "-1|-1|-1";
 button_2.Callback = "two_Calculator_callback";
 
 button_1 = uicontrol(findobj("tag" , "Calculator_gui"),"Style","pushbutton");
 button_1.Position = "250|232|45|45";
 button_1.Tag = "button_1";
-button_1.Icon = "F:\SCILAB\PROJECT\calc_3\1.png"
+button_1.Icon = "IMAGES\1.png";
 button_1.BackgroundColor = "-1|-1|-1";
 button_1.Callback = "one_Calculator_callback";
 
@@ -253,15 +256,15 @@ button_sin_h.Tag = "button_sin_h";
 button_sin_h.String = "sinh";
 button_sin_h.BackgroundColor = "-1|-1|-1";
 button_sin_h.Callback = "sin_h_Calculator_callback";
-button_sin_h.Visible = "on"
+button_sin_h.Visible = "off"
 
 button_cos_h = uicontrol(findobj("tag" , "Calculator_gui"),"Style","pushbutton");
 button_cos_h.Position = "95|172|60|45";
-button_cos_h.Tag = "button_cos";
-button_cos_h.String = "cos";
+button_cos_h.Tag = "button_cos_h";
+button_cos_h.String = "cosh";
 button_cos_h.BackgroundColor = "-1|-1|-1";
-button_cos_h.Callback = "cos_Calculator_callback";
-button_cos_h.Visible = "on";
+button_cos_h.Callback = "cos_h_Calculator_callback";
+button_cos_h.Visible = "off";
 
 button_tan_h = uicontrol(findobj("tag" , "Calculator_gui"),"Style","pushbutton");
 button_tan_h.Position = "170|172|60|45";
@@ -269,15 +272,15 @@ button_tan_h.Tag = "button_tan_h";
 button_tan_h.String = "tanh";
 button_tan_h.BackgroundColor = "-1|-1|-1";
 button_tan_h.Callback = "tan_h_Calculator_callback";
-button_tan_h.Visible = "on";
+button_tan_h.Visible = "off";
 
 button_sec_h = uicontrol(findobj("tag" , "Calculator_gui"),"Style","pushbutton");
 button_sec_h.Position = "20|112|60|45";
-button_sec_h.Tag = "button_sec";
-button_sec_h.String = "sec";
+button_sec_h.Tag = "button_sec_h";
+button_sec_h.String = "sech";
 button_sec_h.BackgroundColor = "-1|-1|-1";
-button_sec_h.Callback = "sec_Calculator_callback";
-button_sec_h.Visible = "on";
+button_sec_h.Callback = "sec_h_Calculator_callback";
+button_sec_h.Visible = "off";
 
 button_csc_h = uicontrol(findobj("tag" , "Calculator_gui"),"Style","pushbutton");
 button_csc_h.Position = "95|112|60|45";
@@ -285,7 +288,7 @@ button_csc_h.Tag = "button_csc_h";
 button_csc_h.String = "csch";
 button_csc_h.BackgroundColor = "-1|-1|-1";
 button_csc_h.Callback = "csc_h_Calculator_callback";
-button_csc_h.Visible = "on";
+button_csc_h.Visible = "off";
 
 button_cot_h = uicontrol(findobj("tag" , "Calculator_gui"),"Style","pushbutton");
 button_cot_h.Position = "170|112|60|45";
@@ -293,7 +296,55 @@ button_cot_h.Tag = "button_cot_h";
 button_cot_h.String = "coth";
 button_cot_h.BackgroundColor = "-1|-1|-1";
 button_cot_h.Callback = "cot_h_Calculator_callback";
-button_cot_h.Visible = "on";
+button_cot_h.Visible = "off";
+
+button_sin_inv_h = uicontrol(findobj("tag" , "Calculator_gui"),"Style","pushbutton");
+button_sin_inv_h.Position = "20|172|60|45";
+button_sin_inv_h.Tag = "button_sin_inv_h";
+button_sin_inv_h.String = "asinh";
+button_sin_inv_h.BackgroundColor = "-1|-1|-1";
+button_sin_inv_h.Callback = "sin_inv_h_Calculator_callback";
+button_sin_inv_h.Visible = "off"
+
+button_cos_inv_h = uicontrol(findobj("tag" , "Calculator_gui"),"Style","pushbutton");
+button_cos_inv_h.Position = "95|172|60|45";
+button_cos_inv_h.Tag = "button_cos_inv_h";
+button_cos_inv_h.String = "acosh";
+button_cos_inv_h.BackgroundColor = "-1|-1|-1";
+button_cos_inv_h.Callback = "cos_inv_h_Calculator_callback";
+button_cos_inv_h.Visible = "off";
+
+button_tan_inv_h = uicontrol(findobj("tag" , "Calculator_gui"),"Style","pushbutton");
+button_tan_inv_h.Position = "170|172|60|45";
+button_tan_inv_h.Tag = "button_tan_inv_h";
+button_tan_inv_h.String = "atanh";
+button_tan_inv_h.BackgroundColor = "-1|-1|-1";
+button_tan_inv_h.Callback = "tan_inv_h_Calculator_callback";
+button_tan_inv_h.Visible = "off";
+
+button_sec_inv_h = uicontrol(findobj("tag" , "Calculator_gui"),"Style","pushbutton");
+button_sec_inv_h.Position = "20|112|60|45";
+button_sec_inv_h.Tag = "button_sec_inv_h";
+button_sec_inv_h.String = "asech";
+button_sec_inv_h.BackgroundColor = "-1|-1|-1";
+button_sec_inv_h.Callback = "sec_inv_h_Calculator_callback";
+button_sec_inv_h.Visible = "off";
+
+button_csc_inv_h = uicontrol(findobj("tag" , "Calculator_gui"),"Style","pushbutton");
+button_csc_inv_h.Position = "95|112|60|45";
+button_csc_inv_h.Tag = "button_csc_inv_h";
+button_csc_inv_h.String = "acsch";
+button_csc_inv_h.BackgroundColor = "-1|-1|-1";
+button_csc_inv_h.Callback = "csc_inv_h_Calculator_callback";
+button_csc_inv_h.Visible = "off";
+
+button_cot_inv_h = uicontrol(findobj("tag" , "Calculator_gui"),"Style","pushbutton");
+button_cot_inv_h.Position = "170|112|60|45";
+button_cot_inv_h.Tag = "button_cot_inv_h";
+button_cot_inv_h.String = "acoth";
+button_cot_inv_h.BackgroundColor = "-1|-1|-1";
+button_cot_inv_h.Callback = "cot_inv_h_Calculator_callback";
+button_cot_inv_h.Visible = "off";
 
 button_pi = uicontrol(findobj("tag" , "Calculator_gui"),"Style","pushbutton");
 button_pi.Position = "20|52|45|45";
@@ -365,29 +416,15 @@ button_percentage.String = "%";
 button_percentage.BackgroundColor = "-1|-1|-1";
 button_percentage.Callback = "percentage_Calculator_callback";
 
-button_degree = uicontrol(findobj("tag" , "Calculator_gui"),"Style","pushbutton");
-button_degree.Position = "245|292|42|45";
-button_degree.Tag = "button_degree";
-button_degree.String = "DEG";
-button_degree.BackgroundColor = "-1|-1|-1";
-button_degree.Callback = "degree_Calculator_callback";
-
-button_radian = uicontrol(findobj("tag" , "Calculator_gui"),"Style","pushbutton");
-button_radian.Position = "285|292|42|45";
-button_radian.Tag = "button_radian";
-button_radian.String = "RAD";
-button_radian.BackgroundColor = "-1|-1|-1";
-button_radian.Callback = "radian_Calculator_callback";
-
 button_inverse = uicontrol(findobj("tag" , "Calculator_gui"),"Style","pushbutton");
-button_inverse.Position = "340|292|42|45";
+button_inverse.Position = "250|292|80|45";
 button_inverse.Tag = "button_inverse";
 button_inverse.String = "INV";
 button_inverse.BackgroundColor = "-1|-1|-1";
 button_inverse.Callback = "inverse_Calculator_callback";
 
 button_hyperbolic = uicontrol(findobj("tag" , "Calculator_gui"),"Style","pushbutton");
-button_hyperbolic.Position = "380|292|42|45";
+button_hyperbolic.Position = "335|292|80|45";
 button_hyperbolic.Tag = "button_hyperbolic";
 button_hyperbolic.String = "HYP";
 button_hyperbolic.BackgroundColor = "-1|-1|-1";
@@ -492,6 +529,246 @@ function tan_Calculator_callback()
     set(output_box,"String", get(output_box,"String")+"tan(")
 endfunction
 
+function csc_Calculator_callback()
+    set(output_box,"String", get(output_box,"String")+"csc(")
+endfunction
+
+function sec_Calculator_callback()
+    set(output_box,"String", get(output_box,"String")+"sec(")
+endfunction
+
+function cot_Calculator_callback()
+    set(output_box,"String", get(output_box,"String")+"cotg(")
+endfunction
+
+function sin_inv_Calculator_callback()
+    set(output_box,"String", get(output_box,"String")+"asin(")
+endfunction
+
+function cos_inv_Calculator_callback()
+    set(output_box,"String", get(output_box,"String")+"acos(")
+endfunction
+
+function tan_inv_Calculator_callback()
+    set(output_box,"String", get(output_box,"String")+"atan(")
+endfunction
+
+function csc_inv_Calculator_callback()
+    set(output_box,"String", get(output_box,"String")+"acsc(")
+endfunction
+
+function sec_inv_Calculator_callback()
+    set(output_box,"String", get(output_box,"String")+"asec(")
+endfunction
+
+function cot_inv_Calculator_callback()
+    set(output_box,"String", get(output_box,"String")+"acot(")
+endfunction
+
+function sin_h_Calculator_callback()
+    set(output_box,"String", get(output_box,"String")+"sinh(")
+endfunction
+
+function cos_h_Calculator_callback()
+    set(output_box,"String", get(output_box,"String")+"cosh(")
+endfunction
+
+function tan_h_Calculator_callback()
+    set(output_box,"String", get(output_box,"String")+"tanh(")
+endfunction
+
+function csc_h_Calculator_callback()
+    set(output_box,"String", get(output_box,"String")+"csch(")
+endfunction
+
+function sec_h_Calculator_callback()
+    set(output_box,"String", get(output_box,"String")+"sech(")
+endfunction
+
+function cot_h_Calculator_callback()
+    set(output_box,"String", get(output_box,"String")+"coth(")
+endfunction
+
+function sin_inv_h_Calculator_callback()
+    set(output_box,"String", get(output_box,"String")+"asinh(")
+endfunction
+
+function cos_inv_h_Calculator_callback()
+    set(output_box,"String", get(output_box,"String")+"acosh(")
+endfunction
+
+function tan_inv_h_Calculator_callback()
+    set(output_box,"String", get(output_box,"String")+"atanh(")
+endfunction
+
+function csc_inv_h_Calculator_callback()
+    set(output_box,"String", get(output_box,"String")+"acsch(")
+endfunction
+
+function sec_inv_h_Calculator_callback()
+    set(output_box,"String", get(output_box,"String")+"asech(")
+endfunction
+
+function cot_inv_h_Calculator_callback()
+    set(output_box,"String", get(output_box,"String")+"acoth(")
+endfunction
+
+function pi_Calculator_callback()
+    set(output_box,"String", get(output_box,"String")+"%pi")
+endfunction
+
+function e_Calculator_callback()
+    set(output_box,"String", get(output_box,"String")+"%e")
+endfunction
+
+function square_Calculator_callback()
+    set(output_box,"String", get(output_box,"String")+"^2")
+endfunction
+
+function x_power_y_Calculator_callback()
+    set(output_box,"String", get(output_box,"String")+"^")
+endfunction
+
+function sqrt_Calculator_callback()
+    set(output_box,"String", get(output_box,"String")+"sqrt(")
+endfunction
+
+function loge_Calculator_callback()
+    set(output_box,"String", get(output_box,"String")+"log(")
+endfunction
+
+function log10_Calculator_callback()
+    set(output_box,"String", get(output_box,"String")+"log10(")
+endfunction
+
+function e_power_x_Calculator_callback()
+    set(output_box,"String", get(output_box,"String")+"exp(")
+endfunction
+
+function factorial_Calculator_callback()
+    set(output_box,"String", get(output_box,"String")+"factorial(")
+endfunction
+
+function percentage_Calculator_callback()
+    set(output_box,"String", get(output_box,"String")+"/100")
+endfunction
+
+function hide_all_trig()
+    set(button_sin_inv_h,"Visible", "off");
+    set(button_cos_inv_h,"Visible", "off");
+    set(button_tan_inv_h,"Visible", "off");
+    set(button_csc_inv_h,"Visible", "off");
+    set(button_sec_inv_h,"Visible", "off");
+    set(button_cot_inv_h,"Visible", "off");
+    set(button_sin_inv,"Visible", "off");
+    set(button_cos_inv,"Visible", "off");
+    set(button_tan_inv,"Visible", "off");
+    set(button_csc_inv,"Visible", "off");
+    set(button_sec_inv,"Visible", "off");
+    set(button_cot_inv,"Visible", "off");
+    set(button_sin_h,"Visible", "off");
+    set(button_cos_h,"Visible", "off");
+    set(button_tan_h,"Visible", "off");
+    set(button_csc_h,"Visible", "off");
+    set(button_sec_h,"Visible", "off");
+    set(button_cot_h,"Visible", "off");
+endfunction
+
+function inverse_Calculator_callback()
+    if (trig_inv == 0 & trig_hyp == 0) then
+        set(button_sin_inv,"Visible", "on");
+        set(button_cos_inv,"Visible", "on");
+        set(button_tan_inv,"Visible", "on");
+        set(button_csc_inv,"Visible", "on");
+        set(button_sec_inv,"Visible", "on");
+        set(button_cot_inv,"Visible", "on");
+        set(button_inverse,"FontWeight", "bold");
+        trig_inv = 1;
+    elseif (trig_inv == 0 & trig_hyp == 1) then
+        hide_all_trig()
+        set(button_sin_inv_h,"Visible", "on");
+        set(button_cos_inv_h,"Visible", "on");
+        set(button_tan_inv_h,"Visible", "on");
+        set(button_csc_inv_h,"Visible", "on");
+        set(button_sec_inv_h,"Visible", "on");
+        set(button_cot_inv_h,"Visible", "on");
+        set(button_inverse,"FontWeight", "bold");
+        trig_inv = 1;
+    elseif (trig_inv == 1 & trig_hyp == 1) then
+        hide_all_trig()
+        set(button_sin_h,"Visible", "on");
+        set(button_cos_h,"Visible", "on");
+        set(button_tan_h,"Visible", "on");
+        set(button_csc_h,"Visible", "on");
+        set(button_sec_h,"Visible", "on");
+        set(button_cot_h,"Visible", "on");
+        set(button_inverse,"FontWeight", "normal");
+        trig_inv = 0;
+    elseif (trig_inv ==1 & trig_hyp == 0) then
+        hide_all_trig()
+        set(button_inverse,"FontWeight", "normal");
+        trig_inv = 0;
+    end
+endfunction
+
+function hyperbolic_Calculator_callback()
+    if (trig_inv == 0 & trig_hyp == 0) then
+        set(button_sin_h,"Visible", "on");
+        set(button_cos_h,"Visible", "on");
+        set(button_tan_h,"Visible", "on");
+        set(button_csc_h,"Visible", "on");
+        set(button_sec_h,"Visible", "on");
+        set(button_cot_h,"Visible", "on");
+        set(button_hyperbolic,"FontWeight", "bold");
+        trig_hyp = 1;
+    elseif (trig_inv == 0 & trig_hyp == 1) then
+        hide_all_trig()
+        set(button_hyperbolic,"FontWeight", "normal");
+        trig_hyp = 0;
+    elseif (trig_inv == 1 & trig_hyp == 1) then
+        hide_all_trig()
+        set(button_sin_inv,"Visible", "on");
+        set(button_cos_inv,"Visible", "on");
+        set(button_tan_inv,"Visible", "on");
+        set(button_csc_inv,"Visible", "on");
+        set(button_sec_inv,"Visible", "on");
+        set(button_cot_inv,"Visible", "on");
+        set(button_hyperbolic,"FontWeight", "normal");
+        trig_hyp = 0;
+    elseif (trig_inv ==1 & trig_hyp == 0) then
+        hide_all_trig()
+        set(button_sin_inv_h,"Visible", "on");
+        set(button_cos_inv_h,"Visible", "on");
+        set(button_tan_inv_h,"Visible", "on");
+        set(button_csc_inv_h,"Visible", "on");
+        set(button_sec_inv_h,"Visible", "on");
+        set(button_cot_inv_h,"Visible", "on");
+        set(button_hyperbolic,"FontWeight", "bold");
+        trig_hyp = 1;
+    end
+endfunction
+
+function hide_all_trig()
+    set(button_sin_inv_h,"Visible", "off");
+    set(button_cos_inv_h,"Visible", "off");
+    set(button_tan_inv_h,"Visible", "off");
+    set(button_csc_inv_h,"Visible", "off");
+    set(button_sec_inv_h,"Visible", "off");
+    set(button_cot_inv_h,"Visible", "off");
+    set(button_sin_inv,"Visible", "off");
+    set(button_cos_inv,"Visible", "off");
+    set(button_tan_inv,"Visible", "off");
+    set(button_csc_inv,"Visible", "off");
+    set(button_sec_inv,"Visible", "off");
+    set(button_cot_inv,"Visible", "off");
+    set(button_sin_h,"Visible", "off");
+    set(button_cos_h,"Visible", "off");
+    set(button_tan_h,"Visible", "off");
+    set(button_csc_h,"Visible", "off");
+    set(button_sec_h,"Visible", "off");
+    set(button_cot_h,"Visible", "off");
+endfunction
+
 function equals_Calculator_callback()
 	str = get(output_box,"String");
 	str_to_exec = "res = " + str;
@@ -499,7 +776,7 @@ function equals_Calculator_callback()
 	if(err <> 0) then
 		disp(lasterror());
 		errclear();
-		newstr = "";		
+		newstr = "error";		
 	else
 		newstr = string(res)
     end
